@@ -7,6 +7,7 @@ import { APP_GUARD } from '@nestjs/core';
 import configuration from 'src/configuration';
 import { InstructorModule } from 'src/instructor/instructor.module';
 import { PostModule } from 'src/post/post.module';
+import { FileModule } from 'src/file/file.module';
 
 @Module({
   imports: [
@@ -22,7 +23,8 @@ import { PostModule } from 'src/post/post.module';
       inject: [ConfigService],
     }),
     InstructorModule,
-    PostModule
+    PostModule,
+    FileModule
   ],
   controllers: [AppController],
   providers: [AppService],

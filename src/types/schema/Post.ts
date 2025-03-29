@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { HydratedDocument, Types } from "mongoose";
+import { ObjectId } from "mongodb";
 
 export type PostDocument = HydratedDocument<Post>;
 
@@ -18,6 +19,9 @@ export class Post{
 
     @Prop({ required: false})
     igPostLink: string;
+
+    @Prop({type: Types.ObjectId})
+    media: ObjectId;
 
     @Prop({required: true, default:0})
     _schemaVersion: number;

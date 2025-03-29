@@ -61,7 +61,8 @@ export class InstructorService {
     email?: string;
     mobile?: string;       
     facebook?: string;     
-    instagram?: string;    
+    instagram?: string; 
+    pfp?: Types.ObjectId   
   }): Promise<InstructorDocument | null> {
     return this.instructorModel.findByIdAndUpdate(id, data, { new: true }).exec();
   }

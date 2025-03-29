@@ -1,5 +1,6 @@
 import {Prop, Schema, SchemaFactory} from '@nestjs/mongoose';
 import { HydratedDocument, Types } from 'mongoose';
+import { ObjectId } from "mongodb";
 
 export type InstructorDocument = HydratedDocument<Instructor>;
 
@@ -31,6 +32,8 @@ export class Instructor{
     @Prop({required:false})
     instagram: string;
 
+    @Prop({type: Types.ObjectId})
+    pfp: ObjectId;
     /**
      * The property we have for helping database migrations.
      * If we ever update the schema definition, we can increment

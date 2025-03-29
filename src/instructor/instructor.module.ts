@@ -4,10 +4,12 @@ import {InstructorController} from './instructor.controller';
 import { MongooseModule } from "@nestjs/mongoose"; 
 import { Collections } from "src/types/Collections";
 import { InstructorSchema } from "src/types/schema/Instructor";
+import { FileModule } from "src/file/file.module";
 
 @Module({
     imports:[
-        MongooseModule.forFeature([{ name: Collections.Instructors, schema: InstructorSchema}])
+        MongooseModule.forFeature([{ name: Collections.Instructors, schema: InstructorSchema}]),
+        FileModule
     ],
     providers: [InstructorService],
     controllers: [InstructorController],
