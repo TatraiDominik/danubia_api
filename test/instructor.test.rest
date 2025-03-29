@@ -1,0 +1,40 @@
+### Get all instructors
+GET http://localhost:3000/danubia_api/instructor
+
+### Get instructor by id
+GET http://localhost:3000/danubia_api/instructor/67e7f4c890196ab14da0b822
+
+### Get instructor by email
+GET http://localhost:3000/danubia_api/instructor/email/john.doe@example.com
+
+### Create Instructor
+POST http://localhost:3000/danubia_api/instructor
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "subject": "Néptánc",
+  "bio": "Néptáncot oktatok",
+  "locations": ["Baja","Vaskút"],
+  "email": "john.doe@example.com",
+  "mobile": "1234567890",
+  "facebook": "https://facebook.com/johndoe",
+  "instagram": "https://instagram.com/johndoe"
+}
+
+### Update Instructor
+PUT http://localhost:3000/danubia_api/instructor/67e7f4c890196ab14da0b822
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "subject": "Népzene",
+  "bio": "Népzenét oktatok",
+  "locations": ["Baja"],
+  "mobile": "0987654321",
+  "facebook": "https://facebook.com/johndoe_updated",
+  "instagram": "https://instagram.com/johndoe_updated"
+}
+
+### Delete Instructor
+DELETE http://localhost:3000/danubia_api/instructor/67e7f4c890196ab14da0b822
