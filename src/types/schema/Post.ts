@@ -26,3 +26,4 @@ export class Post{
 
     updatedAt: Date;
 }
+export const PostSchema = SchemaFactory.createForClass(Post);

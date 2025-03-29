@@ -1,0 +1,30 @@
+### Get all posts
+GET http://localhost:3000/danubia_api/post
+
+### Create post
+POST http://localhost:3000/danubia_api/post
+Content-Type: application/json
+
+{
+    "title": "Example Post",
+    "content": "This is an example post content.",
+    "fbPostLink": "https://facebook.com/example",
+    "igPostLink": "https://instagram.com/example"
+}
+
+### Get post by ID
+GET http://localhost:3000/danubia_api/post/67e8018df9f71ba04a0a7ba9
+
+### Update post
+PUT http://localhost:3000/danubia_api/post/67e8018df9f71ba04a0a7ba9
+Content-Type: application/json
+
+{
+    "title": "Updated Post Title",
+    "content": "Updated post content.",
+    "fbPostLink": "https://facebook.com/updated",
+    "igPostLink": "https://instagram.com/updated"
+}
+
+### Delete post
+DELETE http://localhost:3000/danubia_api/post/67e8018df9f71ba04a0a7ba9

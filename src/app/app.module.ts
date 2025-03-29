@@ -6,6 +6,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import configuration from 'src/configuration';
 import { InstructorModule } from 'src/instructor/instructor.module';
+import { PostModule } from 'src/post/post.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { InstructorModule } from 'src/instructor/instructor.module';
       inject: [ConfigService],
     }),
     InstructorModule,
+    PostModule
   ],
   controllers: [AppController],
   providers: [AppService],
