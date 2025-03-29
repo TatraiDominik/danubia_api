@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete,BadRequestException } from '@nestjs/common';
+
 import { PostService } from './post.service';
 import { Types } from 'mongoose';
 
@@ -22,7 +23,10 @@ export class PostController{
     }
 
     @Get(':id')
-    async findById(@Param('id') id:string){
+    async findById(@Param('id') id: string) {
+        if (!Types.ObjectId.isValid(id)) {
+            throw new BadRequestException('Invalid ID format');
+        }
         return this.postService.findById(new Types.ObjectId(id));
     }
 
@@ -37,7 +41,10 @@ export class PostController{
     }
 
     @Delete(':id')
-    async delete(@Param('id') id: string){
+    async delete(@Param('id') id: string) {
+        if (!Types.ObjectId.isValid(id)) {
+            throw new BadRequestException('Invalid ID format');
+        }
         return this.postService.deletePost(new Types.ObjectId(id));
     }
 }   
