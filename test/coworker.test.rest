@@ -11,6 +11,7 @@ GET http://localhost:3000/danubia_api/coworker/email/john.doe@example.com
 POST http://localhost:3000/danubia_api/coworker
 Content-Type: application/json
 
+
 {
   "fullName": "John Doe",
   "bio": "Néptáncot oktatok",
@@ -35,4 +36,5 @@ Content-Type: application/json
 }
 
 ### Delete co-worker
-DELETE http://localhost:3000/danubia_api/coworker/67e96a4dd0d914df2861a137
+DELETE http://localhost:3000/danubia_api/coworker/67e98c8b96c9953413af358d
+

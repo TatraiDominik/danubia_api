@@ -12,7 +12,7 @@ import { CoWorkerModule } from 'src/coworker/coworker.module';
 import { AuthModule } from 'src/auth/auth.module';
 import { AdminModule } from 'src/admin/admin.module';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { AdminController } from 'src/admin/admin.controller';
+
 
 @Module({
   imports: [
