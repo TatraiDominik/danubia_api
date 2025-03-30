@@ -8,6 +8,7 @@ import configuration from 'src/configuration';
 import { InstructorModule } from 'src/instructor/instructor.module';
 import { PostModule } from 'src/post/post.module';
 import { FileModule } from 'src/file/file.module';
+import { CoWorkerModule } from 'src/coworker/coworker.module';
 
 @Module({
   imports: [
@@ -24,7 +25,8 @@ import { FileModule } from 'src/file/file.module';
     }),
     InstructorModule,
     PostModule,
-    FileModule
+    FileModule,
+    CoWorkerModule
   ],
   controllers: [AppController],
   providers: [AppService],

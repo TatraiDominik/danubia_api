@@ -13,10 +13,10 @@ Content-Type: application/json
 }
 
 ### Get post by ID
-GET http://localhost:3000/danubia_api/post/67e80268ec4cc7359e0e5c43
+GET http://localhost:3000/danubia_api/post/67e8510f92facf8b01c7fb2e
 
 ### Update post
-PUT http://localhost:3000/danubia_api/post/67e80268ec4cc7359e0e5c43
+PUT http://localhost:3000/danubia_api/post/67e8510f92facf8b01c7fb2e
 Content-Type: application/json
 
 {
@@ -27,4 +27,4 @@ Content-Type: application/json
 }
 
 ### Delete post
-DELETE http://localhost:3000/danubia_api/post/67e80268ec4cc7359e0e5c43
+DELETE http://localhost:3000/danubia_api/post/67e8510f92facf8b01c7fb2e

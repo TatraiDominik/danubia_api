@@ -1,0 +1,38 @@
+### Get all co-workers
+GET http://localhost:3000/danubia_api/coworker
+
+### Get co-worker by id
+GET http://localhost:3000/danubia_api/coworker/67e96a4dd0d914df2861a137
+
+### Get co-worker by email
+GET http://localhost:3000/danubia_api/coworker/email/john.doe@example.com
+
+### Create co-worker
+POST http://localhost:3000/danubia_api/coworker
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "bio": "Néptáncot oktatok",
+  "locations": ["Baja","Vaskút"],
+  "email": "john.doe@example.com",
+  "mobile": "1234567890",
+  "facebook": "https://facebook.com/johndoe",
+  "instagram": "https://instagram.com/johndoe"
+}
+
+### Update co-worker
+PUT http://localhost:3000/danubia_api/coworker/67e96a4dd0d914df2861a137
+Content-Type: application/json
+
+{
+  "fullName": "John Doe",
+  "bio": "Népzenét oktatok",
+  "locations": ["Baja"],
+  "mobile": "0987654321",
+  "facebook": "https://facebook.com/johndoe_updated",
+  "instagram": "https://instagram.com/johndoe_updated"
+}
+
+### Delete co-worker
+DELETE http://localhost:3000/danubia_api/coworker/67e96a4dd0d914df2861a137
