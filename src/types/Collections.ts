@@ -1,5 +1,6 @@
 export enum Collections {
     Instructors = 'Instructors',
     Posts = 'Posts',
-    CoWorkers = 'CoWorkers'
+    CoWorkers = 'CoWorkers',
+    Admin = 'Admin'
 }

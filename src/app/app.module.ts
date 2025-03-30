@@ -9,6 +9,9 @@ import { InstructorModule } from 'src/instructor/instructor.module';
 import { PostModule } from 'src/post/post.module';
 import { FileModule } from 'src/file/file.module';
 import { CoWorkerModule } from 'src/coworker/coworker.module';
+import { AuthModule } from 'src/auth/auth.module';
+import { AdminModule } from 'src/admin/admin.module';
+import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -23,12 +26,19 @@ import { CoWorkerModule } from 'src/coworker/coworker.module';
       }),
       inject: [ConfigService],
     }),
+    AuthModule,
+    AdminModule,
     InstructorModule,
     PostModule,
     FileModule,
     CoWorkerModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard
+    }
+  ],
 })
 export class AppModule {}
