@@ -13,16 +13,27 @@ export class CoworkerController {
     ) {}
 
     @Post()
-    async create(@Body() data: {
-        fullName: string;
-        bio: string;
-        locations?: string[];  
-        email: string;
-        mobile?: string;       
-        facebook?: string;     
-        instagram?: string; 
-    }) {
-        return this.coworkerService.createCoWorker(data);
+    @UseInterceptors(FileInterceptor('file'))
+    async create(
+        @Body() data: {
+            fullName: string;
+            bio: string;
+            locations?: string[];  
+            email: string;
+            mobile?: string;       
+            facebook?: string;     
+            instagram?: string; 
+        },
+        @UploadedFile() file?: Express.Multer.File
+    ) {
+        const coworkerData = { ...data };
+        
+        if (file) {
+            const dbFile = await this.fileService.uploadFile(file, 'profile_picture');
+            return this.coworkerService.createCoWorkerWithPfp(coworkerData, dbFile);
+        }
+        
+        return this.coworkerService.createCoWorker(coworkerData);
     }
 
     @Get()

@@ -13,17 +13,28 @@ export class InstructorController {
   ) {}
 
   @Post()
-  async create(@Body() data: {
-    fullName: string;
-    subject: string;
-    bio: string;
-    locations?: string[];  
-    email: string;
-    mobile?: string;       
-    facebook?: string;     
-    instagram?: string;    
-  }) {
-    return this.instructorService.createInstructor(data);
+  @UseInterceptors(FileInterceptor('file'))
+  async create(
+    @Body() data: {
+      fullName: string;
+      subject: string;
+      bio: string;
+      locations?: string[];  
+      email: string;
+      mobile?: string;       
+      facebook?: string;     
+      instagram?: string;    
+    },
+    @UploadedFile() file?: Express.Multer.File
+  ) {
+    const instructorData = { ...data };
+    
+    if (file) {
+      const dbFile = await this.fileService.uploadFile(file, 'profile_picture');
+      return this.instructorService.createInstructorWithPfp(instructorData, dbFile);
+    }
+    
+    return this.instructorService.createInstructor(instructorData);
   }
 
   @Get()

@@ -22,7 +22,7 @@ export class CoWorkerService {
     }): Promise<CoWorkerDocument>{
         const { fullName, bio, email, locations, mobile, facebook, instagram } = data;
   
-        const dbInstructor = new this.coworkerModel({
+        const dbCoworker = new this.coworkerModel({
           fullName,
           bio,
           email,
@@ -32,8 +32,34 @@ export class CoWorkerService {
           instagram,
         });
       
-        await dbInstructor.save();
-        return dbInstructor;
+        await dbCoworker.save();
+        return dbCoworker;
+    }
+
+    async createCoWorkerWithPfp(data: {
+        fullName: string;
+        bio: string;
+        locations?: string[];  
+        email: string;
+        mobile?: string;       
+        facebook?: string;     
+        instagram?: string;
+    }, pfp: Types.ObjectId): Promise<CoWorkerDocument>{
+        const { fullName, bio, email, locations, mobile, facebook, instagram } = data;
+  
+        const dbCoworker = new this.coworkerModel({
+          fullName,
+          bio,
+          email,
+          locations: locations || [],  
+          mobile,
+          facebook,
+          instagram,
+          pfp,
+        });
+      
+        await dbCoworker.save();
+        return dbCoworker;
     }
 
     async findById(id: Types.ObjectId): Promise<CoWorkerDocument | null> {

@@ -39,6 +39,34 @@ export class InstructorService {
     return dbInstructor;
   }
 
+  async createInstructorWithPfp(data: {
+    fullName: string;
+    subject: string;
+    bio: string;
+    locations?: string[];  
+    email: string;
+    mobile?: string;       
+    facebook?: string;     
+    instagram?: string;    
+  }, pfp: Types.ObjectId): Promise<InstructorDocument> {
+    const { fullName, subject, bio, email, locations, mobile, facebook, instagram } = data;
+  
+    const dbInstructor = new this.instructorModel({
+      fullName,
+      subject,
+      bio,
+      email,
+      locations: locations || [],  
+      mobile,
+      facebook,
+      instagram,
+      pfp,
+    });
+  
+    await dbInstructor.save();
+    return dbInstructor;
+  }
+
   
   async findById(id: Types.ObjectId): Promise<InstructorDocument | null> {
     return await this.instructorModel.findById(id).exec();
