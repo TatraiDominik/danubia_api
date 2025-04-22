@@ -4,6 +4,7 @@ import { FileService } from 'src/file/file.service';
 import { Types } from 'mongoose';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ImATeapotException } from '@nestjs/common';
+import { CoWorkerType } from 'src/types/schema/CoWorker';
 
 @Controller('coworker')
 export class CoworkerController {
@@ -22,7 +23,9 @@ export class CoworkerController {
             email: string;
             mobile?: string;       
             facebook?: string;     
-            instagram?: string; 
+            instagram?: string;
+            type?: CoWorkerType;
+            occupation?: string;
         },
         @UploadedFile() file?: Express.Multer.File
     ) {
@@ -59,7 +62,9 @@ export class CoworkerController {
         email?: string;
         mobile?: string;       
         facebook?: string;     
-        instagram?: string;    
+        instagram?: string;
+        type?: CoWorkerType;
+        occupation?: string;
       }) {
         return this.coworkerService.updateCoWorker(new Types.ObjectId(id), data);
     }

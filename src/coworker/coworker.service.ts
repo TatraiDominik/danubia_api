@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from 'mongoose';
 import { Collections } from "src/types/Collections";
-import { CoWorker, CoWorkerDocument } from "src/types/schema/CoWorker";
+import { CoWorker, CoWorkerDocument, CoWorkerType } from "src/types/schema/CoWorker";
 
 @Injectable()
 export class CoWorkerService {
@@ -19,8 +19,10 @@ export class CoWorkerService {
         mobile?: string;       
         facebook?: string;     
         instagram?: string;
+        type?: CoWorkerType;
+        occupation?: string;
     }): Promise<CoWorkerDocument>{
-        const { fullName, bio, email, locations, mobile, facebook, instagram } = data;
+        const { fullName, bio, email, locations, mobile, facebook, instagram, type, occupation } = data;
   
         const dbCoworker = new this.coworkerModel({
           fullName,
@@ -30,6 +32,8 @@ export class CoWorkerService {
           mobile,
           facebook,
           instagram,
+          type,
+          occupation,
         });
       
         await dbCoworker.save();
@@ -44,8 +48,10 @@ export class CoWorkerService {
         mobile?: string;       
         facebook?: string;     
         instagram?: string;
+        type?: CoWorkerType;
+        occupation?: string;
     }, pfp: Types.ObjectId): Promise<CoWorkerDocument>{
-        const { fullName, bio, email, locations, mobile, facebook, instagram } = data;
+        const { fullName, bio, email, locations, mobile, facebook, instagram, type, occupation } = data;
   
         const dbCoworker = new this.coworkerModel({
           fullName,
@@ -55,6 +61,8 @@ export class CoWorkerService {
           mobile,
           facebook,
           instagram,
+          type,
+          occupation,
           pfp,
         });
       
@@ -83,7 +91,9 @@ export class CoWorkerService {
         mobile?: string;       
         facebook?: string;     
         instagram?: string; 
-        pfp?: Types.ObjectId   
+        pfp?: Types.ObjectId;
+        type?: CoWorkerType;
+        occupation?: string;
     }): Promise<CoWorkerDocument | null> {
         return this.coworkerModel.findByIdAndUpdate(id, data, { new: true }).exec();
     }
