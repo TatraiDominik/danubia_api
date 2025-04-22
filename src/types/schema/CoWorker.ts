@@ -3,7 +3,6 @@ import { HydratedDocument, Types } from 'mongoose';
 import { ObjectId } from "mongodb";
 
 export enum CoWorkerType {
-    REGULAR = 'regular',
     EDUCATIONAL_SUPPORT = 'educational_support',
     INSTITUTION_LEADERSHIP = 'institution_leadership'
 }
@@ -14,7 +13,7 @@ export type CoWorkerDocument = HydratedDocument<CoWorker>;
 export class CoWorker{
     _id: Types.ObjectId;
 
-    @Prop({required: true, enum: CoWorkerType, default: CoWorkerType.REGULAR})
+    @Prop({required: true, enum: CoWorkerType})
     type: CoWorkerType;
 
     @Prop({required: false})

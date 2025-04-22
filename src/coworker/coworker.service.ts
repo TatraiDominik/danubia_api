@@ -1,13 +1,12 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from 'mongoose';
-import { Collections } from "src/types/Collections";
 import { CoWorker, CoWorkerDocument, CoWorkerType } from "src/types/schema/CoWorker";
 
 @Injectable()
 export class CoWorkerService {
     constructor(
-        @InjectModel(Collections.CoWorkers)
+        @InjectModel('CoWorkers')
         private readonly coworkerModel: Model<CoWorkerDocument>
     ) {}
 

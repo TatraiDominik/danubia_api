@@ -1,13 +1,12 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model, Types } from 'mongoose';
-import { Collections } from "src/types/Collections";
 import { Instructor, InstructorDocument } from "src/types/schema/Instructor";
 
 @Injectable()
 export class InstructorService {
   constructor(
-    @InjectModel(Collections.Instructors)
+    @InjectModel('Instructors')
     private readonly instructorModel: Model<InstructorDocument> 
   ) {}
 
